@@ -8,27 +8,40 @@ const routes = [
     {
         path: "/",
         name: "astro",
-        component: Astronauts
+        component: Astronauts,
+        children: [
+            {
+                path: "astro/details/:id",
+                name: "astro_details",
+                component: Details
+            }
+        ]
     },
     {
         path: "/ship",
         name: "ship",
-        component: Ship
+        component: Ship,
+
+        children: [
+            {
+                path: "details/:id",
+                name: 'ship_details',
+                component: Details
+            }
+        ],
     }, 
     {
         path: "/events",
         name: "event",
-        component: Event
+        component: Event,
+        children: [
+            {
+                path: "details/:id",
+                name: 'event_details',
+                component: Details
+            }
+        ],
     },
-    {
-        path: "/details/{type}/{id}",
-
-    },
-    {
-        path: "/ship/:id?",
-        name: 'ship_detail',
-        component: Details
-    }
 ];
 
 const router = createRouter({
